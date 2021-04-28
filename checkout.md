@@ -12,7 +12,7 @@ order: 4
 The checkout service is no more than a helper class that manages and chains the various steps like updating addresses, creating the order, calculating shipping cost, taxes and discounts.
 
 ```php
-use Bazar\Modesl\Order;
+use Bazar\Models\Order;
 use Bazar\Support\Facades\Cart;
 use Illuminate\Support\Facades\Response;
 use Throwable;
@@ -37,7 +37,7 @@ class CheckoutController extends Controller
             ]);
         })->onFailure(function (Throwable $e, Order $order) {
             return Response::redirect()->back()->withErrors([
-                'checkout' => 'Checkout failed!';
+                'checkout' => 'Checkout failed!'
             ]);
         })->process();
     }
